@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# *********************************************
+# * ModisSwathTool                            *
+# * Shell script for running the MRTSwath GUI *
+# *********************************************
+
+# Set the MRTSWATH_HOME environmental var to the MRTSwath installation directory.
+
+MRTSWATH_HOME="/Users/jorgeirun/Projects/modis/MRTSwath"
+export MRTSWATH_HOME
+
+# Set the MRTSWATH_DATA_DIR environmental var to the MRTSwath data directory.
+MRTSWATH_DATA_DIR="$MRTSWATH_HOME/data"
+export MRTSWATH_DATA_DIR
+
+# Set the PATH environment variable to include the MRTSwath executables.
+
+PATH="$MRTSWATH_HOME/bin:$PATH"
+export PATH
+
+# Run the MRTSwath Java GUI.
+"/usr/bin/java" -jar "$MRTSWATH_HOME/bin/ModisSwathTool.jar"

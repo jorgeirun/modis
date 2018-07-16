@@ -1,0 +1,66 @@
+#!/bin/sh
+
+# *******************************************************
+# * Makefile for the Java GUI source code               *
+# * Gail Schmidt, 03/17/2004                            *
+# *******************************************************
+
+# compile the .java files in the resample directory
+cd mrtswath/resample
+echo "Compiling source files in `pwd`..."
+javac -sourcepath ../.. -source 1.5 -target 1.5 *.java
+
+# compile the .java files in the modis directory
+cd ..
+echo "Compiling source files in `pwd`..."
+javac -sourcepath .. -source 1.5 -target 1.5 *.java
+
+# create the .jar file
+cd ..
+echo "Creating ModisSwathTool.jar in `pwd`..."
+jar -cvmf manifest.txt ModisSwathTool.jar mrtswath/resample/*.class mrtswath/*.class
+
+echo "Creating java index..."
+jar -i ModisSwathTool.jar
+
+# copy the .jar file to the bin directory
+echo "Moving ModisSwathTool.jar to the ../bin directory..."
+mv ModisSwathTool.jar ../bin
+
+# remove the .class files
+echo "Clean up class files..."
+rm mrtswath/resample/*.class
+rm mrtswath/*.class
+
+# *******************************************************
+# * Makefile for the MRTSwathBatch source code          *
+# *******************************************************
+
+cd MRTSwathBatch
+
+# compile the .java files in the mrtswath directory
+cd gov/lpdaac/mrtswathbatch
+echo "Compiling source files in `pwd`..."
+javac -sourcepath ../../.. -source 1.5 -target 1.5 *.java
+
+# create the .jar file
+cd ../../..
+echo "Creating MRTSwathBatch.jar in `pwd`..."
+jar -cvmf manifest.txt MRTSwathBatch.jar gov/lpdaac/mrtswathbatch/*.class
+
+echo "Creating java index..."
+jar -i MRTSwathBatch.jar
+
+# move the .jar file to the ../bin directory
+echo "Moving MRTSwathBatch.jar to the ../../bin directory..."
+mv MRTSwathBatch.jar ../../bin
+
+# remove the .class files
+echo "Clean up class files..."
+rm gov/lpdaac/mrtswathbatch/*.class
+
+cd ..
+
+
+echo "Done."
+

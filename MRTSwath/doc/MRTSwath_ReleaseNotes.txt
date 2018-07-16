@@ -1,0 +1,314 @@
+   MODIS Reprojection Tool Swath (MRTSwath) Release Notes
+                       Version 2.2
+                       November 2010
+
+                  Land Processes DAAC
+ USGS Earth Resources Observation and Science (EROS) Center
+
+Capabilities
+------------
+
+1. MODIS Data Products
+
+The MODIS Reprojection Tool Swath (MRTSwath) allows the user to reproject
+swath (DAAC and direct broadcast Level-1 and Level-2) MODIS data products.
+Support for gridded land products has been implemented in the MODIS
+Reprojection Tool (MRT).
+
+2. Map Projections
+
+The MODIS Reprojection Tool Swath allows the user to reproject to the
+following map projections:
+
+    * Albers Equal Area
+    * Equirectangular
+    * Geographic
+    * Hammer
+    * Integerized Sinusoidal
+    * Interrupted Goode Homolosine
+    * Lambert Azimuthal
+    * Lambert Conformal Conic
+    * Mercator
+    * Mollweide
+    * Polar Stereographic
+    * Sinusoidal
+    * Transverse Mercator
+    * Universal Transverse Mercator
+
+3. ISIN-Enhanced GCTP
+
+As part of this software, the Generalized Cartographic Transformation
+Package (GCTP) has been modified to incorporate the new Integerized
+Sinusoidal Projection.
+
+4. Spectral Subsetting
+
+Any subset of the input HDF-EOS Scientific Data Sets (SDSs) may be selected
+for reprojection. The default is to reproject all input SDSs. NOTE: The
+MRTSwath will only process SDSs of the nominal MODIS scan size. If other
+SDSs are specified, the MRTSwath will output an error message for that SDS,
+but will continue on to process any other specified SDSs.
+
+5. Spatial Subsetting
+
+Two corners (upper left and lower right) of a rectangle in input/output
+space may be specified. These corners may be given as coordinates in input
+latitude and longitude, input line/sample pairs, or output projection
+coordinates. If specifying line/sample pairs specify using a zero-based
+coordinate system where the upper left corner is (0, 0). When specifying
+input lat/long or input line/sample, the other two rectangle corners (upper
+right and lower left) are computed automatically in input space. Then all
+four corners are reprojected into output space, using the specified map
+projection. Finally, a minimum-bounding rectangle is computed that contains
+the four reprojected points, in output space. All points inside this
+rectangle in output space are mapped back into input space for
+reprojection. The default is to reproject the entire input image, using the
+bounding rectangular coordinates from the global attributes metadata.
+
+When specifying output projection coordinates, these coordinates must be
+specified in the same units as is used for the projection (degrees for
+geographic and meters for all other projections). The upper right and lower
+left corners are computed from the specified upper left and lower right
+corners to create a rectangle in output space. Using these coordinates in
+output space, the corners are mapped back into input space to determine the
+spatial subset corners in input space. The output image corner coordinates
+should match the user-specified output spatial subset corners. If not
+already, the lower right corner may need to be adjusted slightly so that it
+is an integral number of lines and samples, based on the output pixel size.
+
+6. Resampling
+
+Resampling may be nearest neighbor, bilinear, or cubic convolution.
+
+7. Datum Conversions
+
+Datum conversions are not supported in the MRTSwath application.
+
+8. Output Pixel Size
+
+An output pixel size may be specified, one for each SDS. If only one pixel
+size is specified, then it will be used for all SDSs. The default is to use
+the same input and output pixel sizes for corresponding input and output
+SDSs. For output to the Geographic projections, the pixel size must be
+specified in decimal degrees. For output to all other projections, the
+pixel size must be specified in meters.
+
+9. Data Types
+
+The MRTSwath supports character data and 8-bit and 16-bit integer data
+(both signed and unsigned). If not specified, the default output data type
+is the same as the input data type for each corresponding SDS.
+
+10. File Formats
+
+MODIS swath HDF-EOS files are supported on input. HDF-EOS, GeoTIFF, and raw
+binary files are supported on output.
+
+12. Platforms
+
+The MODIS Reprojection Tool Swath is highly portable software. It currently
+runs on four different platforms:
+
+    * Windows
+    * Linux-32
+    * Linux-64
+    * Macintosh
+
+13. Interfaces
+
+The MODIS Reprojection Tool Swath may be invoked from a powerful
+command-line interface. A GUI version of MRTSwath is being developed and
+will be available at a later date. The scriptable command-line interface,
+with its variety of command-line options, is likely to be the method of
+choice for reprojecting large numbers of files.
+
+
+History
+-------
+
+Version 2.2 (November 2010)
+-----------------------------
+
+1. Windows version was compiled with Visual Studio Express 2008.  It no
+   longer depends on Cygwin.
+
+2. Due to conflicts with the MRTDATADIR environment variable with MRT
+   and the HEG tool, MRTSwath now uses MRTSWATH_DATA_DIR as the default.  It
+   will use MRTDATADIR if MRTSWATH_DATA_DIR is not defined, however.
+
+3. MRTSwath can now be installed into and work with input and output data
+   contained in directories with spaces.
+
+4. There is a slight variation when rounding pixel values when writing integer
+   output images in that negative values are now rounded to the next higher
+   nagative value, i.e. -1.5 is rounded to -2.
+
+5. Higher precision variables are now used in calculations to fix an issue 
+   using nearest neighbor sampling which was setting some output pixels to the
+   default fill value.
+
+6. Added INT32 and UINT32 output file types.
+
+7. A miscalculation during nearest neighbor resampling, which affected 
+   categorical value output, was resolved so that no non-source values
+   are written to MRTSwath output.
+
+
+Version 2.1 (January 2006)
+--------------------------
+1. Modified the software to ignore '/'s in output SDS names when creating
+   the output GeoTiff and RawBinary names.  The output GeoTiff and Raw Binary
+   filenames are created by appending the SDSname to the base output filename.
+   The '/' in the SDS name makes the software think there is a directory in
+   the filename that doesn't exist.  For example, given a base filename of
+   "MOD03out" and an SDS name of "Land/SeaMask", the output GeoTiff filename
+   would be "MOD03out_Land/SeaMask".  The fix will ignore the '/' and the
+   new output filename would be "MOD03out_LandSeaMask".
+
+2. Fixed a bug in the software that prevented more than 32 SDSs from being
+   processed in a file.  The software would often core dump on files with
+   more than 32 SDSs (i.e. MOD03 files contain 39 SDSs).
+
+3. Modified the software to read the _FillValue for the SDS and use that
+   fill value in the output product. If no _FillValue is specified then 0.0
+   will be used for the default fill value. NOTE: In some cases, the fill
+   value is 65535 instead of 0 or a negative number. In these cases, the
+   non-image data resulting from the projection (in addition to the fill
+   values in the image) will be very bright instead of the dark pixels that
+   most users are expecting.
+
+4. Modified the resampling process so that if 50% or more of the pixels in
+   the kernel are background fill, then the resulting output pixel will also
+   be background fill. The background fill value used is the _FillValue
+   tag associated with the SDSs. If no _FillValue is specified then 0.0 will
+   be used for the default fill value.
+
+5. Modified the routine which reads the bounding coordinates so that the
+   bounding coordinates will be read even if they are not in the standard
+   Struct, Core, and/or Archive metadata groups. The direct broadcast data
+   commonly does not provide the full-blown metadata (i.e. Struct, Core, and
+   Archive) groups that are available in the MODIS HDF products from the
+   DAAC.
+
+6. The previous release specified that the Geotiff files would have the UL
+   corner refer to the center of the UL corner pixel. An incorrect Geotiff
+   tag was used in this modification. RasterPixelIsArea actually refers to
+   the UL corner of the pixel instead of the center of the pixel. This has
+   been changed and we are now using RasterPixelIsPoint so that the center
+   of the pixel is specified appropriately.
+
+7. Modified the NN resampling kernel processing to use a post-processing
+   pass to fill any holes left in the output image.  Previous versions of
+   the software would produce NN output products with holes (single pixels
+   with values of background fill) down the center of the image.
+
+
+Version 2.0 (July 2004)
+-----------------------
+1. Added a Graphical User Interface in addition to the command-line MRTSwath
+   executable.
+
+2. Modified the parameter file parser to handle the Windows ^M characters
+   at the end of a line.  Version 1.0 could not handle any ^M characters in
+   the parameter file, which caused problems for users creating parameter
+   files on the Windows platform.
+
+3. Modified swath2grid executable to output all information and error messages
+   to mrtswath.log in the local directory.
+
+4. Modified swath2grid executable to no longer tag the WGS84 datum to all
+   GeoTiff and Raw Binary output products.  Since the user is providing an
+   ellipsoid and/or semi-major and semi-minor axes, it technically is incorrect
+   to say that data set has a particular datum.  Datums have their own
+   ellipsoid axes, which may be different from what the user specified.  If
+   the use specifies WGS84 as the ellipsoid, then the WGS84 datum will be
+   tagged since it has the same axes values as the WGS84 ellipsoid.
+
+5. During testing of the GUI, a bug was found in the conversion of the
+   UL and LR corners when using the LINE_SAMPLE option.  This problem has been
+   fixed.
+
+6. Modified the install script to not create .tcshrc, .cshrc, .bashrc, .login,
+   or .bash_profile scripts if they don't already exist on the local system.
+   If they do exist, then they are updated for the MRTSwath environment
+   variables and to add the MRTSwath 'bin' directory to the PATH.
+
+7. Fixed a bug that caused the software to core dump when projecting to the
+   ISIN projection. The MRTSwath software used a value of 99 to represent
+   the ISIN projection, however the GCTP software was expecting a value of
+   31. The issue was fixed by modifying MRTSwath to use a value of 31 to
+   represent the ISIN projection.
+
+8. Added output for CHAR8 data types.
+
+9. Fixed a bug that caused incorrect background fill values to be output
+   when converting from one data type to another.
+
+10. Added a shortcut icon for the MRTSwath and instructions for installation
+    and setup in the User's Guide.
+
+11. Added the MODIS sphere, radius of 6371007.181, to the list of spheres
+    for output data. It will have a sphere code of 20.
+
+12. If the user specifies a file extension of .hdf, .HDF, .tif, .TIF, .hdr,
+    or .HDR for the output filename, that extension is now ignored. The
+    output file format determines the extension of the output filename.
+    Previous versions of MRTSwath would leave in the original extension and
+    then add an additional extension, based on the output file format.
+
+13. Previous versions of the MRTSwath output the GeoTiff UL corner point as
+    the outer extent of the UL corner. This has been modified to represent
+    the center of the pixel of the UL corner. In addition, the
+    GTRasterTypeGeoKey GeoTiff tag has been modified to RasterPixelisArea to
+    correctly represent that the corner point is the center of the pixel.
+    The corner point representations for HDF-EOS and raw binary will remain
+    the outer extent of the pixels.
+
+
+Version 1.0
+-----------
+1. First public release.
+
+2. Installation scripts provided.
+
+
+Caveats
+-------
+
+1. MODIS gridded data (Level-2G, Level-3, and Level-4) is not supported.
+   Only Level-1 and Level-2 swath HDF-EOS products are supported.
+
+2. The output GeoTiff products follow the GeoTiff standard that has been
+   in use at the USGS EROS. ENVI supports the output GeoTiff products from
+   the MRTSwath, but we have been informed that other software does not
+   always support ingesting our GeoTiff products.
+
+
+Installation
+------------
+
+To obtain the MRTSwath software, download the appropriate installation
+files for your specific platform from the USGS EROS LP DAAC MODIS Reprojection 
+Tool web site (https://lpdaac.usgs.gov/lpdaac/tools). The download package
+needs to be unzipped to extract a zip archive containing the MRTSwath software
+with an installation script. In the Windows package, an executable file named 
+unzip is also included.  For UNIX systems, unzip and zip are freeware packages 
+available from GNU. For more information, or to obtain the zip/unzip software, 
+see the GNU Web site at http://www.gnu.org/software/software.html. If using the 
+automatic installation for Windows, only the download.zip should be unzipped. 
+The installation script will handle the inflation of the MRTSwath_<platform>.zip.
+
+Once the MRTSwath software has been downloaded, it needs to be installed on 
+the user's host system. This can be done with either an automatic or manual
+installation process. The automatic installation process is recommended for most 
+users. Both methods require some pre-install checks.  First, be advised that 
+entry of full pathnames during installation is highly recommended for all 
+directories. Second, in order to run the MRTSwath GUI, a current version of 
+Java  must be installed on the system (at least the Java 2 Runtime Environment 
+version 1.5 or the Java 2 SDK version 1.5 or later). Third, the path to the Java 
+directory is needed during the installation process, so have this information 
+available during installation.  
+
+Instructions for automatic and manual installation to UNIX-based (Linux-32, 
+Linux-64, and Mactel) and Windows-based systems are detailed in the MRTSwath
+User Manual available from the LP DAAC Tools download site.
