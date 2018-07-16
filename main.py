@@ -9,12 +9,14 @@ import os
 # TEST Section
 #
 
-# item1 = "MOD35_L2/MOD35_L2.A2017001.1355.061.2017312070506.hdf"
-# item2 = "MOD03/MOD03.A2017001.1355.061.2017312061337.hdf"
-# command = "MRTSwath/bin/swath2grid -if="+item1+" -of=sample.tif -gf="+item2+" -pf=defaultparametersfile.prm"
-# print('===== Completed =====')
-# completed = subprocess.run(command, shell=True)
-# print('returncode:', completed)
+# item1 = "MOD35_L2.A2017001.1355.061.2017312070506.hdf"
+# item2 = "MOD03.A2017001.1355.061.2017312061337.hdf"
+
+# item3 = item1.split(".")
+
+# print(item3[1])
+# print(item3[2])
+
 # sys.exit()
 #
 # END TEST Section
@@ -39,6 +41,9 @@ print("===================================")
 #
 dwnld_MOD35_L2 	= 	modisProductDownloader.downloadFiles("MOD35_L2", "61", startDate, endDate, coordsWest, coordsNorth, coordsEast, coordsSouth)
 dwnld_MOD03 	= 	modisProductDownloader.downloadFiles("MOD03", "61", startDate, endDate, coordsWest, coordsNorth, coordsEast, coordsSouth)
+
+# dwnld_MYD35_L2 	= 	modisProductDownloader.downloadFiles("MYD35_L2", "61", startDate, endDate, coordsWest, coordsNorth, coordsEast, coordsSouth)
+# dwnld_MYD03 	= 	modisProductDownloader.downloadFiles("MYD03", "61", startDate, endDate, coordsWest, coordsNorth, coordsEast, coordsSouth)
 
 print("===================================")
 print("======== Step 1 Completed =========")
