@@ -2,7 +2,6 @@ MOD03/
 MOD35_L2/
 MYD03/
 MYD35_L2/
-tiffFiles/
+tifFiles/
 mrtswath.log
-__pycache__/filesProcessor.cpython-36.pyc
-__pycache__/modisProductDownloader.cpython-36.pyc
+__pycache__/

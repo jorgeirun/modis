@@ -12,6 +12,7 @@ if __name__ == "__main__":
 
 #  Download files
 def downloadFiles(*args):
+	print("===== Step 1: Download Files ======")
 	product = list(map(str, args))[0] # get product code from args
 	collection = list(map(str, args))[1] # get start date from args
 	startDate = list(map(str, args))[2] # get start date from args
@@ -45,9 +46,11 @@ def downloadFiles(*args):
 					else:
 						# requesting metadata
 						response = requests.head(path.text)
-						print("Downloading "+filename+" ("+str(int(response.headers['Content-length'])/1000000.0)+" MB)...")
+						# print("Downloading "+filename+" ("+str(int(response.headers['Content-length'])/1000000.0)+" MB)...")
+						print("Downloading "+filename)
 						# download file
 						downloadRequest = requests.get(path.text)
 						with open(product+"/"+filename, "wb") as code:
 							code.write(downloadRequest.content)
 	print(product+" files downloaded.")
+	print("======== Step 1 Completed =========")
