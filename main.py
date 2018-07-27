@@ -11,14 +11,13 @@ import mergeTifFiles
 # print(item3[2])
 # mergeFiles = mergeTifFiles.mergeFilesFromFolder("A2017001")
 # sys.exit()
-#
 # END TEST Section
-#
 
-# VARS
+
+# DEFINE VARS
 #
-startDate 	= "2017-01-02"
-endDate 	= "2017-01-02"
+startDate 	= "2017-01-01"
+endDate 	= "2017-01-01"
 coordsWest 	= "-65"
 coordsNorth = "-18"
 coordsEast 	= "-53"
@@ -41,4 +40,4 @@ processFiles = filesProcessor.process("MOD35_L2", "MOD03")
 #
 # MERGE TIF FILES
 #
-# mergeFiles = mergeTifFiles.mergeFilesFromFolder("A2017001")
+# mergeFiles = mergeTifFiles.mergeFilesFromFolder("A2017001") # TODO: IN PROGRESS
