@@ -28,3 +28,9 @@ Requirements:
 - glob
 - rasterio
 - pyhdf
+
+
+Instructions:
+-------------
+- In Terminal:
+$ python3 main.py
