@@ -38,7 +38,8 @@ def process(*args):
 				os.makedirs(folderName)
 			tifFilePath = os.getcwd()+"/"+folderName
 			print(tifFilePath)
-			command = "MRTSwath/bin/swath2grid -if=MOD35_L2/"+item1+" -of="+tifFilePath+"/"+tifFileName+".tif -gf=MOD03/"+item2+" -pf=first-band-defaultparametersfile.prm"
+			# command = "MRTSwath/bin/swath2grid -if=MOD35_L2/"+item1+" -of="+tifFilePath+"/"+tifFileName+".tif -gf=MOD03/"+item2+" -pf=first-band-defaultparametersfile.prm"
+			command = "MRTSwath/bin/swath2grid -if=MOD35_L2/"+item1+" -of="+tifFilePath+"/"+tifFileName+".tif -gf=MOD03/"+item2+" -pf=all-bands-defaultparametersfile.prm"
 			completed = subprocess.run(command, shell=True)
 			# print('returncode:', completed)
 
