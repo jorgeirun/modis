@@ -12,8 +12,8 @@ if __name__ == "__main__":
 
 #  Download files
 def downloadFiles(*args):
-	print("===== Step 1: Download Files ======")
 	product = list(map(str, args))[0] # get product code from args
+	print("===== Step 1: Download "+product+" Files ======")
 	collection = list(map(str, args))[1] # get start date from args
 	startDate = list(map(str, args))[2] # get start date from args
 	endDate = list(map(str, args))[3] # get end date from args
@@ -53,4 +53,4 @@ def downloadFiles(*args):
 						with open(product+"/"+filename, "wb") as code:
 							code.write(downloadRequest.content)
 	print(product+" files downloaded.")
-	print("======== Step 1 Completed =========")
+	print("======== Step 1  "+product+" Completed =========")

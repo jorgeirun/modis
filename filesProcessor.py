@@ -1,4 +1,5 @@
 import os
+import sys
 import subprocess
 
 def main(argv):
@@ -14,6 +15,8 @@ def process(*args):
 	lists = {}
 	# read all args
 	argsArray = list(map(str, args))
+	# print(argsArray)
+	# sys.exit(1)
 	for item in argsArray:
 		productName = item
 		# Get the current work directory (cwd)
