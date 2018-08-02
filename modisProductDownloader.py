@@ -30,7 +30,9 @@ def downloadFiles(*args):
 		print("File will be downloaded in folder: "+product)
 
 	# Get codes, urls  and download files
+	print(url)
 	codesRequest = requests.get(url)
+	# print(codesRequest)
 	if codesRequest.status_code == 200 :
 		itemCode = ET.fromstring(codesRequest.text)
 		print(str(len(itemCode))+" files found")
