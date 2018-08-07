@@ -21,7 +21,6 @@ def downloadFiles(*args):
 	coords = "north="+list(map(str, args))[5]+"&south="+list(map(str, args))[7]+"&west="+list(map(str, args))[4]+"&east="+list(map(str, args))[6]
 	dayNightBoth = "D" # D (default), DN, DNB
 	url = "https://modwebsrv.modaps.eosdis.nasa.gov/axis2/services/MODAPSservices/searchForFiles?product="+product+"&collection="+collection+"&start="+startDate+"&stop="+endDate+"&"+coords+"&coordsOrTiles="+coordsOrTiles+"&dayNightBoth="+dayNightBoth
-	# print(url)
 	# create folder if it not exists
 	if not os.path.exists(product):
 		print("Folder "+product+" created")
@@ -32,7 +31,6 @@ def downloadFiles(*args):
 	# Get codes, urls  and download files
 	print(url)
 	codesRequest = requests.get(url)
-	# print(codesRequest)
 	if codesRequest.status_code == 200 :
 		itemCode = ET.fromstring(codesRequest.text)
 		print(str(len(itemCode))+" files found")
@@ -54,5 +52,6 @@ def downloadFiles(*args):
 						downloadRequest = requests.get(path.text)
 						with open(product+"/"+filename, "wb") as code:
 							code.write(downloadRequest.content)
-	print(product+" files downloaded.")
-	print("======== Step 1  "+product+" Completed =========")
+		print(product+" files downloaded.")
+		print("======== Step 1  "+product+" Completed =========")
+	print("Error Code: "+codesRequest)

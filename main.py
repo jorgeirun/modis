@@ -16,8 +16,8 @@ import mergeTifFiles
 
 # DEFINE VARS
 #
-startDate 	= "2017-08-01"
-endDate 	= "2017-08-30" # all downloaded: 01, 02, 03, 04, 05 06, 07
+startDate 	= "2017-11-01"
+endDate 	= "2017-11-30"
 coordsWest 	= "-65"
 coordsNorth = "-18"
 coordsEast 	= "-53"
