@@ -16,8 +16,8 @@ import mergeTifFiles
 
 # DEFINE VARS
 #
-startDate 	= "2017-11-01"
-endDate 	= "2017-11-30"
+startDate 	= "2017-12-01"
+endDate 	= "2017-12-31"
 coordsWest 	= "-65"
 coordsNorth = "-18"
 coordsEast 	= "-53"
@@ -29,13 +29,13 @@ collection	= "61"
 #
 # Download files from MODIS repository
 # dwnld_MOD35_L2 	= 	modisProductDownloader.downloadFiles("MOD35_L2", collection, startDate, endDate, coordsWest, coordsNorth, coordsEast, coordsSouth)
-dwnld_MOD03	 	= 	modisProductDownloader.downloadFiles("MOD03", collection, startDate, endDate, coordsWest, coordsNorth, coordsEast, coordsSouth)
+# dwnld_MOD03	 	= 	modisProductDownloader.downloadFiles("MOD03", collection, startDate, endDate, coordsWest, coordsNorth, coordsEast, coordsSouth)
 
 #
 # PROCESS FILES
 #
 # Process downloaded files
-# processFiles = filesProcessor.process("MOD35_L2", "MOD03")
+processFiles = filesProcessor.process("MOD35_L2", "MOD03")
 
 #
 # MERGE TIF FILES

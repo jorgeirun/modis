@@ -34,16 +34,18 @@ def process(*args):
 			# create TIFF file name
 			tmptifFileName = item1.split(".")
 			tifFileName = tmptifFileName[1]+"."+tmptifFileName[2]
-			print(tmptifFileName)
 			# create path to save tiff files
 			folderName = "tifFiles/"+tmptifFileName[1] # tifFiles folder name and files date
 			if not os.path.exists(folderName):
 				os.makedirs(folderName)
 			tifFilePath = os.getcwd()+"/"+folderName
-			print(tifFilePath)
-			# command = "MRTSwath/bin/swath2grid -if=MOD35_L2/"+item1+" -of="+tifFilePath+"/"+tifFileName+".tif -gf=MOD03/"+item2+" -pf=first-band-defaultparametersfile.prm"
 			command = "MRTSwath/bin/swath2grid -if=MOD35_L2/"+item1+" -of="+tifFilePath+"/"+tifFileName+".tif -gf=MOD03/"+item2+" -pf=all-bands-defaultparametersfile.prm"
+			# command = "MRTSwath/bin/swath2grid -if=MOD35_L2/"+item1+" -of="+tifFilePath+"/"+tifFileName+".tif -gf=MOD03/"+item2+" -pf=first-band-defaultparametersfile.prm"
 			completed = subprocess.run(command, shell=True)
-			# print('returncode:', completed)
+			print('returncode:', completed)
+			# print(tmptifFileName[1])
+			# Stop after day 100
+			if tmptifFileName[1] == "A2017100":
+				sys.exit(1)
 
 	print("======== Step 2 Completed =========")
