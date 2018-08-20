@@ -54,4 +54,4 @@ def downloadFiles(*args):
 							code.write(downloadRequest.content)
 		print(product+" files downloaded.")
 		print("======== Step 1  "+product+" Completed =========")
-	print("Error Code: "+codesRequest)
+	# print("Error Code: "+codesRequest)
