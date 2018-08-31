@@ -1,0 +1,16 @@
+# KDevelop Custom Project File List
+Makefile
+test/Makefile
+test/test_hdf_reader.c
+src/hdf_reader.c
+src/Makefile
+include/hdf_reader.h
+example/read_sds_data.c
+example/read_sds_calibration.c
+example/read_sds_data_custom_calibration.c
+example/read_hdf_file_structure.c
+example/read_file_attribute.C
+read_file_attribute.c
+example/read_file_attribute.c
+example/read_sds_attribute.c
+example/read_sds_structure.c

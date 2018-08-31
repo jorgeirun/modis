@@ -1,0 +1,8 @@
+*** v0.0.1 ***
+- change the signature of the sds_data functions to avoid the double pointers,
+and make the usage easier
+
+*** v0.0.0 ***
+- creation
+
+

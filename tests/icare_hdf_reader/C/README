@@ -1,0 +1,57 @@
+********************************
+***** C_HDF_READER LIBRARY *****
+********************************
+
+0 - Informations :
+------------------
+Version : 0.0.1
+Author(s) : CGTD/UDEV/N. PASCAL
+Plateform : linux
+
+1 - Description :
+-----------------
+Pure C library for reading the HDF4 files
+
+2 - Package Content :
+---------------------
+
+<installation_directory>
+           |
+           |-doc/
+           |  |-html/    the API documentation
+           |
+           |-include/    the header files (*.h)
+           |
+           |-src/        the library sources (*.c)
+           |
+           |-example/    the sources of basic usage examples. See here for a quick example of main useful routines
+           |             like : reading a sds data, reading an attribute, obtaining informations about an HDF file...
+           |
+           |-data/       an example of HDF4 file use by the example sources
+           |
+           |-lib/        once maked, the built library will be wrote here
+           |
+           |-bin/        the executables of the examples will be wrote here
+
+
+3 - Prerequisites :
+-------------------------
+HDF4 library (>=4.2r1)
+
+2 - Compilation :
+-----------------
+In the extraction directory, type :
+
+source c_hdf_reader-compil-env.sh
+make
+
+4 - Utilisation :
+-----------------
+Use it as a classic libray, add :
+
+(1) #include "c_hdf_reader.h"                        in your source files
+
+(2) -I<include_dir> -L<lib_dir> -lc_hdf_reader       to your compiler options, where
+
+    - <include_dir> is the directory that contains the header files (ie <installation_directory>/include)
+    - <lib_dir>     is the directory that contains the library (ie <installation_directory>/lib)

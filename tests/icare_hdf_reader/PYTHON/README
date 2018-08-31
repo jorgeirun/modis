@@ -1,0 +1,49 @@
+*********************************
+***** PY_HDF_READER LIBRARY *****
+*********************************
+
+0 - Informations :
+------------------
+Version : 0.0.0
+Author(s) : CGTD/UDEV/N. PASCAL
+Plateform : linux
+
+1 - Description :
+-----------------
+Python library for reading the HDF4 files
+
+2 - Package Content :
+---------------------
+
+<installation_directory>
+           |
+           |-doc/
+           |  |-html/    the API documentation
+           |
+           |-src/        the library sources (*.py)
+           |
+           |-example/    the sources of basic usage examples. See here for a quick example of main useful routines
+           |             like : reading a sds data, reading an attribute, obtaining informations about an HDF file...
+           |
+           |-data/       an example of HDF4 file use by the example sources
+
+3 - Prerequisites :
+-------------------------
+HDF4 library >=4.2r1   (http://hdf.ncsa.uiuc.edu/products/hdf4/index.html)
+pyhdf        >=0.7-3   (http://pysclint.sourceforge.net/pyhdf/)
+numpy        >= 1.0.0  (http://numpy.scipy.org/)
+
+4 - Utilisation :
+-----------------
+Use it as a classic python library
+
+(1) Add <installation_directory>/src to your PYTHONPATH environment variable. If you do not have one already set, create it. And of course, replace <installation_directory> with the path of the package extraction directory.
+
+    For example, if you are using a bash interpreter, you can add to your $HOME/.bash_profile the line :
+        export PYTHONPATH=<installation_directory>/src:$PYTHONPATH
+    And then type
+        source $HOME/.bash_profile
+
+(2) Add to the imports of your python scripts (see the example/test_py_hdf_reader.py file if it does not make sense for you)
+        from py_hdf_reader import *
+
