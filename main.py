@@ -32,4 +32,3 @@ processFiles = filesProcessor.process("MOD35_L2", "MOD03")
 # List all folder inside tifFiles and merge files within each sub-folder
 # check merge in folders with more than 2 tif files
 #
-mergeFiles = mergeTifFiles.mergeFilesFromFolder("A2017001") # TODO: IN PROGRESS
