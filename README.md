@@ -28,6 +28,8 @@ Requirements:
 - glob
 - rasterio
 - pyhdf
+- Tifffile: pip install tifffile
+
 
 
 Instructions:
