@@ -2,6 +2,8 @@ MOD03/
 MOD35_L2/
 MYD03/
 MYD35_L2/
+testHDF/
+tests/
 tifFiles/
 mrtswath.log
 __pycache__/
