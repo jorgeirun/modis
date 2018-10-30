@@ -45,7 +45,7 @@ def process(*args):
 			print('returncode:', completed)
 			# print(tmptifFileName[1])
 			# Stop after day 100
-			if tmptifFileName[1] == "A2017100":
-				sys.exit(1)
+			# if tmptifFileName[1] == "A2017100":
+				# sys.exit(1)
 
 	print("======== Step 2 Completed =========")
