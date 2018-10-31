@@ -2,6 +2,8 @@ import sys
 import modisProductDownloader
 import filesProcessor
 import mergeTifFiles
+import dbConnect
+import insertData
 
 # DEFINE VARIABLES
 #
@@ -32,5 +34,18 @@ collection	= "61"
 # List all folder inside tifFiles and merge files within each sub-folder
 # check merge in folders with more than 2 tif files
 #
-mergeFiles = mergeTifFiles.mergeFilesFromFolder('A2017004');
-mergeFiles = mergeTifFiles.mergeFilesFromFolder('A2017005');
+# mergeFiles = mergeTifFiles.mergeFilesFromFolder('A2017001');
+
+#
+# CONNECT TO DB
+#
+# Connect to db server, create database and table
+#
+connectToDB = dbConnect.connectToDB();
+
+#
+# SAVE DATA TO DB
+#
+# Connect to DB and save data
+#
+# insertData = insertData.saveData();
