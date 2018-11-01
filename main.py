@@ -41,7 +41,7 @@ collection	= "61"
 #
 # Connect to db server, create database and table
 #
-connectToDB = dbConnect.connectToDB();
+# connectToDB = dbConnect.connectToDB();
 
 #
 # SAVE DATA TO DB
