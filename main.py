@@ -2,11 +2,13 @@ import sys
 import modisProductDownloader
 import filesProcessor
 import mergeTifFiles
+import dbConnect
+import insertData
 
 # DEFINE VARIABLES
 #
-startDate 	= "2017-11-01"
-endDate 	= "2017-11-30"
+startDate 	= "2017-01-01"
+endDate 	= "2017-01-02"
 coordsWest 	= "-65"
 coordsNorth = "-18"
 coordsEast 	= "-53"
@@ -24,7 +26,7 @@ collection	= "61"
 # PROCESS FILES
 #
 # Process downloaded files
-processFiles = filesProcessor.process("MOD35_L2", "MOD03")
+# processFiles = filesProcessor.process("MOD35_L2", "MOD03")
 
 #
 # MERGE TIF FILES
@@ -32,3 +34,18 @@ processFiles = filesProcessor.process("MOD35_L2", "MOD03")
 # List all folder inside tifFiles and merge files within each sub-folder
 # check merge in folders with more than 2 tif files
 #
+# mergeFiles = mergeTifFiles.mergeFilesFromFolder('A2017001');
+
+#
+# CONNECT TO DB
+#
+# Connect to db server, create database and table
+#
+# connectToDB = dbConnect.connectToDB();
+
+#
+# SAVE DATA TO DB
+#
+# Connect to DB and save data
+#
+# insertData = insertData.saveData();
