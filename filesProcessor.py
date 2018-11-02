@@ -39,13 +39,13 @@ def process(*args):
 			if not os.path.exists(folderName):
 				os.makedirs(folderName)
 			tifFilePath = os.getcwd()+"/"+folderName
-			command = "MRTSwath/bin/swath2grid -if=MOD35_L2/"+item1+" -of="+tifFilePath+"/"+tifFileName+".tif -gf=MOD03/"+item2+" -pf=all-bands-defaultparametersfile.prm"
-			# command = "MRTSwath/bin/swath2grid -if=MOD35_L2/"+item1+" -of="+tifFilePath+"/"+tifFileName+".tif -gf=MOD03/"+item2+" -pf=first-band-defaultparametersfile.prm"
+			# command = "MRTSwath/bin/swath2grid -if=MOD35_L2/"+item1+" -of="+tifFilePath+"/"+tifFileName+".tif -gf=MOD03/"+item2+" -pf=parameters-file-all-bands.prm"
+			command = "MRTSwath/bin/swath2grid -if=MOD35_L2/"+item1+" -of="+tifFilePath+"/"+tifFileName+".tif -gf=MOD03/"+item2+" -pf=parameters-file-band-2.prm"
 			completed = subprocess.run(command, shell=True)
 			print('returncode:', completed)
 			# print(tmptifFileName[1])
 			# Stop after day 100
-			# if tmptifFileName[1] == "A2017100":
-				# sys.exit(1)
+			# if tmptifFileName[1] == "A2017005":
+			# 	sys.exit(1)
 
 	print("======== Step 2 Completed =========")
