@@ -1,4 +1,5 @@
 import sys
+import os, fnmatch
 import modisProductDownloader
 import filesProcessor
 import mergeTifFiles
@@ -34,7 +35,12 @@ collection	= "61"
 # List all folder inside tifFiles and merge files within each sub-folder
 # check merge in folders with more than 2 tif files
 #
-# mergeFiles = mergeTifFiles.mergeFilesFromFolder('A2017001');
+listOfFolders = sorted(os.listdir('tifFiles'))
+pattern = "A*"
+for folder in listOfFolders:
+	if fnmatch.fnmatch(folder, pattern):
+		if (folder != "A2017102"):
+			mergeFiles = mergeTifFiles.mergeFilesFromFolder(folder);
 
 #
 # CONNECT TO DB
