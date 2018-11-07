@@ -35,12 +35,14 @@ collection	= "61"
 # List all folder inside tifFiles and merge files within each sub-folder
 # check merge in folders with more than 2 tif files
 #
-listOfFolders = sorted(os.listdir('tifFiles'))
-pattern = "A*"
-for folder in listOfFolders:
-	if fnmatch.fnmatch(folder, pattern):
-		if (folder != "A2017102"):
-			mergeFiles = mergeTifFiles.mergeFilesFromFolder(folder);
+# listOfFolders = sorted(os.listdir('tifFiles'))
+# pattern = "A*"
+# for folder in listOfFolders:
+# 	if fnmatch.fnmatch(folder, pattern):
+# 		if (folder != "A2017102"):
+# 			mergeFiles = mergeTifFiles.mergeFilesFromFolder(folder);
+mergeFiles = mergeTifFiles.mergeFilesFromAllFolders();
+
 
 #
 # CONNECT TO DB
