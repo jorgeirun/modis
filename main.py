@@ -2,14 +2,14 @@ import sys
 import os, fnmatch
 import modisProductDownloader
 import filesProcessor
-import mergeTifFiles
-import dbConnect
-import insertData
+# import mergeTifFiles
+# import dbConnect
+# import insertData
 
 # DEFINE VARIABLES
 #
 startDate 	= "2017-01-01"
-endDate 	= "2017-01-02"
+endDate 	= "2017-01-31"
 coordsWest 	= "-65"
 coordsNorth = "-18"
 coordsEast 	= "-53"
@@ -27,7 +27,7 @@ collection	= "61"
 # PROCESS FILES
 #
 # Process downloaded files
-# processFiles = filesProcessor.process("MOD35_L2", "MOD03")
+processFiles = filesProcessor.process("MOD35_L2", "MOD03")
 
 #
 # MERGE TIF FILES
@@ -41,7 +41,7 @@ collection	= "61"
 # 	if fnmatch.fnmatch(folder, pattern):
 # 		if (folder != "A2017102"):
 # 			mergeFiles = mergeTifFiles.mergeFilesFromFolder(folder);
-mergeFiles = mergeTifFiles.mergeFilesFromAllFolders();
+# mergeFiles = mergeTifFiles.mergeFilesFromAllFolders();
 
 
 #

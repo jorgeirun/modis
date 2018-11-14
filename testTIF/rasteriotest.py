@@ -2,7 +2,7 @@ import rasterio
 
 dataset = rasterio.open('A2017001_Cloud_Mask_b2_merged.tif')
 
-value = 29
+value = 1
 binary = format(value, '08b')
 print(str(value)+": "+str(binary))
 print("Flag: "+binary[7])
@@ -12,7 +12,7 @@ print("Sunglint flag flint: "+binary[3])
 print("Snow/Ice background flag: "+binary[2])
 print("Land/Water background flag: "+binary[1]+binary[0])
 print('========')
-value = 21
+value = 4
 binary = format(value, '08b')
 print(str(value)+": "+str(binary))
 print("Flag: "+binary[7])
@@ -42,7 +42,7 @@ print("Sunglint flag flint: "+binary[3])
 print("Snow/Ice background flag: "+binary[2])
 print("Land/Water background flag: "+binary[1]+binary[0])
 print('========')
-value = 93
+value = 17
 binary = format(value, '08b')
 print(str(value)+": "+str(binary))
 print("Flag: "+binary[7])
@@ -52,7 +52,27 @@ print("Sunglint flag flint: "+binary[3])
 print("Snow/Ice background flag: "+binary[2])
 print("Land/Water background flag: "+binary[1]+binary[0])
 print('========')
-value = 17
+value = 21
+binary = format(value, '08b')
+print(str(value)+": "+str(binary))
+print("Flag: "+binary[7])
+print("CM: "+binary[6]+binary[5])
+print("Day/Night: "+binary[4])
+print("Sunglint flag flint: "+binary[3])
+print("Snow/Ice background flag: "+binary[2])
+print("Land/Water background flag: "+binary[1]+binary[0])
+print('========')
+value = 29
+binary = format(value, '08b')
+print(str(value)+": "+str(binary))
+print("Flag: "+binary[7])
+print("CM: "+binary[6]+binary[5])
+print("Day/Night: "+binary[4])
+print("Sunglint flag flint: "+binary[3])
+print("Snow/Ice background flag: "+binary[2])
+print("Land/Water background flag: "+binary[1]+binary[0])
+print('========')
+value = 93
 binary = format(value, '08b')
 print(str(value)+": "+str(binary))
 print("Flag: "+binary[7])
