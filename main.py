@@ -2,9 +2,9 @@ import sys
 import os, fnmatch
 import modisProductDownloader
 import filesProcessor
-# import mergeTifFiles
-# import dbConnect
-# import insertData
+import mergeTifFiles
+import database
+import insertData
 
 # DEFINE VARIABLES
 #
@@ -27,7 +27,7 @@ collection	= "61"
 # PROCESS FILES
 #
 # Process downloaded files
-processFiles = filesProcessor.process("MOD35_L2", "MOD03")
+# processFiles = filesProcessor.process("MOD35_L2", "MOD03")
 
 #
 # MERGE TIF FILES
@@ -39,21 +39,20 @@ processFiles = filesProcessor.process("MOD35_L2", "MOD03")
 # pattern = "A*"
 # for folder in listOfFolders:
 # 	if fnmatch.fnmatch(folder, pattern):
-# 		if (folder != "A2017102"):
-# 			mergeFiles = mergeTifFiles.mergeFilesFromFolder(folder);
-# mergeFiles = mergeTifFiles.mergeFilesFromAllFolders();
-
+# 		mergeFiles = mergeTifFiles.mergeFilesFromFolder(folder);
 
 #
-# CONNECT TO DB
+# DATABASE
 #
-# Connect to db server, create database and table
+# Connect to postgres and create db and tables
 #
-# connectToDB = dbConnect.connectToDB();
+# createDB = database.checkForDB()
+# createHeaderTable = database.createHeaderTable()
+# createDetailsTable = database.createDetailsTable()
 
 #
 # SAVE DATA TO DB
 #
 # Connect to DB and save data
 #
-# insertData = insertData.saveData();
+insertData = insertData.saveData();

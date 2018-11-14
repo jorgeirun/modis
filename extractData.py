@@ -3,8 +3,6 @@ import sys
 import struct
 import os, fnmatch
 
-dataset = rasterio.open('A2017001_Cloud_Mask_b2_merged.tif')
-
 # Get folder list in tifFiles
 listOfFolders = sorted(os.listdir('tifFiles'))
 pattern = "A*"

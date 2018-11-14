@@ -1,7 +1,6 @@
 import psycopg2
 from psycopg2 import Error
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
-import sys
 
 def checkForDB():
   # Create DB
@@ -55,8 +54,3 @@ def createDetailsTable():
     print("Table modis_data_pixel_details created successfully.")
   except (Exception, psycopg2.DatabaseError) as error :
       print ("Message:", error)
-
-
-checkForDB()
-createHeaderTable()
-createDetailsTable()
