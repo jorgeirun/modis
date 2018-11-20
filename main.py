@@ -49,6 +49,7 @@ collection	= "61"
 # createDB = database.checkForDB()
 # createHeaderTable = database.createHeaderTable()
 # createDetailsTable = database.createDetailsTable()
+# createModisTable = database.createModisTable()
 
 #
 # SAVE DATA TO DB
