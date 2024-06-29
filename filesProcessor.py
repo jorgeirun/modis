@@ -1,6 +1,4 @@
-import os
-import sys
-import subprocess
+import os, sys, subprocess
 
 def main(argv):
     print(get_value(*argv[1:]))
@@ -15,8 +13,6 @@ def process(*args):
 	lists = {}
 	# read all args
 	argsArray = list(map(str, args))
-	# print(argsArray)
-	# sys.exit(1)
 	for item in argsArray:
 		productName = item
 		# Get the current work directory (cwd)
@@ -25,11 +21,9 @@ def process(*args):
 		filesInFolder = os.listdir(currentDir+'/'+productName)
 		# Sort array by filename and save in 'lists' collection using product name as key
 		lists[productName] = sorted(filesInFolder, key = str.lower)
-	# print(lists)
 
 	for item1, item2 in zip(lists["MOD35_L2"], lists["MOD03"]):
 		# process CloudMask and GeoLocation files in order to get GeoTiff images
-		# print(item1, " - ", item2)
 		if item1[0] != ".": # this is to avoid using ".DS_Store" hidden file created in macosx
 			# create TIFF file name
 			tmptifFileName = item1.split(".")
@@ -39,13 +33,8 @@ def process(*args):
 			if not os.path.exists(folderName):
 				os.makedirs(folderName)
 			tifFilePath = os.getcwd()+"/"+folderName
-			# command = "MRTSwath/bin/swath2grid -if=MOD35_L2/"+item1+" -of="+tifFilePath+"/"+tifFileName+".tif -gf=MOD03/"+item2+" -pf=parameters-file-all-bands.prm"
 			command = "MRTSwath/bin/swath2grid -if=MOD35_L2/"+item1+" -of="+tifFilePath+"/"+tifFileName+".tif -gf=MOD03/"+item2+" -pf=parameters-file-band-2.prm"
 			completed = subprocess.run(command, shell=True)
 			print('returncode:', completed)
-			# print(tmptifFileName[1])
-			# Stop after day 100
-			# if tmptifFileName[1] == "A2017005":
-			# 	sys.exit(1)
 
 	print("======== Step 2 Completed =========")

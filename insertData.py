@@ -1,5 +1,4 @@
-import os, fnmatch, time,sys
-import subprocess
+import os, fnmatch, time,sys, subprocess
 import psycopg2
 from psycopg2 import Error
 import rasterio
@@ -9,10 +8,6 @@ import rasterio
 user = "modis"
 password = "modis"
 dbname = "modis"
-# Local
-# user = "postgres"
-# password = "postgres"
-# dbname = "modis"
 
 def saveData():
 	# Open DB connection

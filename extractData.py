@@ -1,9 +1,6 @@
-import rasterio
-import sys
-import struct
-import os, fnmatch
+import rasterio, sys, struct, os, fnmatch
 
-# Get folder list in tifFiles
+# Get folder list in tiffFiles
 listOfFolders = sorted(os.listdir('tifFiles'))
 pattern = "A*"
 for folder in listOfFolders:
@@ -27,7 +24,7 @@ for folder in listOfFolders:
 				print('========')
 				counter = 0
 				section = dataset.read(1)
-				# here we list rows
+				# Here we list rows
 				for i, row in enumerate(section):
 					# this is a column
 					for x, item in enumerate(row):
@@ -38,7 +35,6 @@ for folder in listOfFolders:
 							print("Value: "+str(item))
 							binary = format(item, '08b')
 							print("Binary: "+str(binary))
-							# print("".join(reversed(format(item, '08b'))))
 							print(str(dataset.transform * (i, x))) # print pixel coordinates
 							print("Flag: "+binary[7])
 							print("CM: "+binary[6]+binary[5])
@@ -46,5 +42,4 @@ for folder in listOfFolders:
 							print("Sunglint flag flint: "+binary[3])
 							print("Snow/Ice background flag: "+binary[2])
 							print("Land/Water background flag: "+binary[1]+binary[0])
-							# sys.exit(1)
 				print('Total pixels: '+str(counter))

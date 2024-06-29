@@ -1,14 +1,8 @@
-import os, fnmatch, time,sys
-import subprocess
+import os, fnmatch, time,sys, subprocess, json
 import psycopg2
 from psycopg2 import Error
-
-import json
 from psycopg2.extras import RealDictCursor
 
-# user = "postgres"
-# password = "postgres"
-# dbname = "modis"
 user = "modis"
 password = "modis"
 dbname = "modis"

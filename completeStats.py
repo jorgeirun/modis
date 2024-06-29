@@ -4,9 +4,6 @@ import psycopg2
 from psycopg2 import Error
 from psycopg2.extras import RealDictCursor
 
-# user = "postgres"
-# password = "postgres"
-# dbname = "modis"
 user = "modis"
 password = "modis"
 dbname = "modis"

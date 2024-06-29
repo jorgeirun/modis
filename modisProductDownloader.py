@@ -46,7 +46,7 @@ def downloadFiles(*args):
 					else:
 						# requesting metadata
 						response = requests.head(path.text)
-						# print("Downloading "+filename+" ("+str(int(response.headers['Content-length'])/1000000.0)+" MB)...")
+						print("Downloading "+filename+" ("+str(int(response.headers['Content-length'])/1000000.0)+" MB)...")
 						print("Downloading "+filename)
 						# download file
 						downloadRequest = requests.get(path.text)
@@ -54,4 +54,3 @@ def downloadFiles(*args):
 							code.write(downloadRequest.content)
 		print(product+" files downloaded.")
 		print("======== Step 1  "+product+" Completed =========")
-	# print("Error Code: "+codesRequest)
