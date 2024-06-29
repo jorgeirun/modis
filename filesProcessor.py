@@ -37,4 +37,5 @@ def process(*args):
 			completed = subprocess.run(command, shell=True)
 			print('returncode:', completed)
 
+
 	print("======== Step 2 Completed =========")
